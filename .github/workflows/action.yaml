@@ -7,10 +7,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - name: build docker image
-      run: docker build -t nkathad/docker-react -f Dockerfile.dev .
-    - name:   Run test
-      run: docker run nkathad/docker-react npm run test -- --coverage
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: build docker image
+        run: |
+             docker build -t nkathad/docker-react -f Dockerfile.dev .
+      - name:   Run test
+        run: docker run nkathad/docker-react npm run test -- --coverage
