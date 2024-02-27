@@ -14,4 +14,18 @@ jobs:
         run: |
              docker build -t nkathad/docker-react -f Dockerfile.dev .
       - name:   Run test
-        run: docker run nkathad/docker-react npm run test -- --coverage
+        run: docker run nkathad/docker-react npm run test -- --coverage  
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to elastinbeanstalk
+        region: us-east-1
+        app: docker-react
+        env: "Docker-react-env"
+        bucket_name:"elasticbeanstalk-us-east-1-748704513488"
+        bucket_path:"docker-react"
+        on:
+          branch: master
+
+        
+ 
