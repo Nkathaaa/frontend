@@ -15,17 +15,19 @@ jobs:
              docker build -t nkathad/docker-react -f Dockerfile.dev .
       - name:   Run test
         run: docker run nkathad/docker-react npm run test -- --coverage  
+
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to elastinbeanstalk
-        region: us-east-1
-        app: docker-react
-        env: "Docker-react-env"
-        bucket_name:"elasticbeanstalk-us-east-1-748704513488"
-        bucket_path:"docker-react"
-        on:
-          branch: master
+        uses: aws-actions/configure-aws-credentials@v1
+        with:  
+         aws_access_key-id: ${{secrets.AWS_ACCESS_KEY_ID }}
+         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         aws_region: us-east-1
+      - name: Deploy to Elastic Beanstalk
+        run: |
+          eb deploy      
 
         
  
