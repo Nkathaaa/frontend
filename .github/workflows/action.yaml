@@ -29,7 +29,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy to Elastic Beanstalk
-        run: eb deploy  Docker-react-env   
+        run: |
+          eb init -p docker Docker-react-env
+          eb create Docker-react-env
+          eb deploy Docker-react-env
      
         
  
