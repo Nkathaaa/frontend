@@ -21,10 +21,7 @@ jobs:
     steps:
       - name: Install Elastic Beanstalk CLI
         run: |
-          wget https://s3.amazonaws.com/elasticbeanstalk-cli-resources/cli/AWS-ElasticBeanstalk-CLI-2.2.2.zip
-          unzip AWS-ElasticBeanstalk-CLI-2.2.2.zip
-          sudo mv AWS-ElasticBeanstalk-CLI-2.2.2/ /opt/
-          sudo ln -s /opt/AWS-ElasticBeanstalk-CLI-2.2.2/eb /usr/local/bin/eb
+             pip install awsebcli
       - name: Deploy to elastinbeanstalk
         uses: aws-actions/configure-aws-credentials@v1
         with:  
