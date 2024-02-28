@@ -30,7 +30,7 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to Elastic Beanstalk
         run: |
-             cd ..
+             cd ../..
              eb deploy Docker-react-env
    
         
