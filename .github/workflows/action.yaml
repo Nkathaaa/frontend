@@ -31,9 +31,7 @@ jobs:
       - name: Deploy to Elastic Beanstalk
         run: |
              pwd
-             cd /home/runner/work/frontend/frontend/public
-             pwd
-             ls
+             ls -la
              eb deploy Docker-react-env
    
         
