@@ -27,14 +27,13 @@ jobs:
         with:  
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-           - name: Initialize Elastic Beanstalk
-      - name     
+          aws-region: us-east-1\
+      - name: deploy
         run: |
              cd /home/runner/work/frontend/frontend
              /home/runner/.local/bin/eb init -r us-east-1 -p nodejs -e Docker-react-env
-     - name: Deploy to Elastic Beanstalk
-       run: |
+      - name: Deploy to Elastic Beanstalk
+        run: |
             /home/runner/.local/bin/eb deploy
    
      # - name: Deploy to Elastic Beanstalk
