@@ -31,11 +31,12 @@ jobs:
       - name: deploy
         run: |
              cd /home/runner/work/frontend/frontend
-             /home/runner/.local/bin/eb init -r us-east-1 -p nodejs -e Docker-react-env
+             /home/runner/.local/bin/eb init -r us-east-1 -p nodejs
+ 
+
       - name: Deploy to Elastic Beanstalk
-        run: |
-            /home/runner/.local/bin/eb deploy
-   
+        run:  |
+              /home/runner/.local/bin/eb create   Docker-react-env
      # - name: Deploy to Elastic Beanstalk
      #   run: |
       #       pwd
