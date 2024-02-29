@@ -1,5 +1,10 @@
-name: Deploy react app
-on:
+ - name: Initialize Elastic Beanstalk
+      run: |
+        cd /home/runner/work/frontend/frontend
+        /home/runner/.local/bin/eb init -r <region> -p <platform> -e <environment-name>
+        
+    - name: Deploy to Elastic Beanstalk
+      run: /home/runner/.local/bin/eb deploy
   push:
     branches:
       -  master 
@@ -29,12 +34,21 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: Deploy to Elastic Beanstalk
+           - name: Initialize Elastic Beanstalk
+      - name     
         run: |
-             pwd
-             ls -l
-             which eb 
-             eb deploy Docker-react-env
+             cd /home/runner/work/frontend/frontend
+             /home/runner/.local/bin/eb init -r us-east-1 -p nodejs -e Docker-react-env
+     - name: Deploy to Elastic Beanstalk
+       run: |
+            /home/runner/.local/bin/eb deploy
    
+     # - name: Deploy to Elastic Beanstalk
+     #   run: |
+      #       pwd
+        #     ls -l
+          #   which eb 
+          #   eb deploy Docker-react-env
+  
         
  
