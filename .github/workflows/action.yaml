@@ -32,6 +32,7 @@ jobs:
       - name: Deploy to Elastic Beanstalk
         run: |
              pwd
+             ls -l
              which eb 
              eb deploy Docker-react-env
    
