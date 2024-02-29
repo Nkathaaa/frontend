@@ -22,7 +22,14 @@ jobs:
       - name: Install Elastic Beanstalk CLI
         run: |
              pip install awsebcli
-
+      - name: Debug
+        run: |
+          cd /home/runner/work/frontend/frontend
+          ls -l   # Check file permissions
+          which eb   # Check the path to eb
+          env:
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
              
       - name: Deploy to elastinbeanstalk
         uses: aws-actions/configure-aws-credentials@v1
