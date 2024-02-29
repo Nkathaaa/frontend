@@ -22,6 +22,8 @@ jobs:
       - name: Install Elastic Beanstalk CLI
         run: |
              pip install awsebcli
+
+             
       - name: Deploy to elastinbeanstalk
         uses: aws-actions/configure-aws-credentials@v1
         with:  
