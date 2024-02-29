@@ -1,10 +1,4 @@
- - name: Initialize Elastic Beanstalk
-      run: |
-        cd /home/runner/work/frontend/frontend
-        /home/runner/.local/bin/eb init -r <region> -p <platform> -e <environment-name>
-        
-    - name: Deploy to Elastic Beanstalk
-      run: /home/runner/.local/bin/eb deploy
+on:
   push:
     branches:
       -  master 
