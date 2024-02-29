@@ -31,9 +31,8 @@ jobs:
       - name: deploy
         run: |
              cd /home/runner/work/frontend/frontend
-             /home/runner/.local/bin/eb init -r us-east-1 
+             echo "1" | /home/runner/.local/bin/eb init -r us-east-1 -p nodejs 
  
-
       - name: Deploy to Elastic Beanstalk
         run:  |
               /home/runner/.local/bin/eb create   Docker-react-env
