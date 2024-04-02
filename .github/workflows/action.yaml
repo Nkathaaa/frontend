@@ -36,12 +36,5 @@ jobs:
       - name: Deploy to Elastic Beanstalk
         run:  |
               /home/runner/.local/bin/eb create   Docker-react-env
-     # - name: Deploy to Elastic Beanstalk
-     #   run: |
-      #       pwd
-        #     ls -l
-          #   which eb 
-          #   eb deploy Docker-react-env
-
-        #Tt
+    
  
