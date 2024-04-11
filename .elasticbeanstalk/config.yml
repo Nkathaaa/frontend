@@ -4,7 +4,7 @@ branch-defaults:
 global:
   application_name: frontend
   branch: null
-  default_ec2_keyname: null
+  default_ec2_keyname: nkatha-NVirginia-key
   default_platform: Docker running on 64bit Amazon Linux 2023
   default_region: us-east-1
   include_git_submodules: true
