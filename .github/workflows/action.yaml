@@ -39,5 +39,5 @@ jobs:
 
     - name: Deploy Docker image to Elastic Beanstalk
       run:  |
-            eb use frontend-environment
+            eb use  ${{ secrets.AWS_ENVIRONMENT_NAME}}
             eb deploy --verbose
