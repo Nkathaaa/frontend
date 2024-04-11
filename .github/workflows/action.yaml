@@ -38,4 +38,6 @@ jobs:
       run: eb init -r ${{ secrets.AWS_DEFAULT_REGION }} -p docker --verbose
 
     - name: Deploy Docker image to Elastic Beanstalk
-      run: eb deploy --verbose
+      run:  |
+            eb use frontend-environment
+            eb deploy --verbose
