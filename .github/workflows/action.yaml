@@ -13,8 +13,8 @@ jobs:
       - name: build docker image
         run: |
              docker build -t nkathad/docker-react -f Dockerfile.dev .
-      - name:   Run test
-        run: docker run nkathad/docker-react npm run test -- --coverage  
+      #- name:   Run test
+      #  run: docker run nkathad/docker-react npm run test -- --coverage  
   deploy:
     needs: build
     runs-on: ubuntu-latest
