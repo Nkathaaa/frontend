@@ -40,4 +40,4 @@ jobs:
     - name: Deploy Docker image to Elastic Beanstalk
       run:  |
             eb use frontend
-            eb deploy --verbose
+            eb deploy nkathad/docker-react
