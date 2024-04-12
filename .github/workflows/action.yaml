@@ -13,6 +13,14 @@ jobs:
       - name: build docker image
         run: |
              docker build -t nkathad/docker-react -f Dockerfile.dev .
+      - name: Docker Login
+        uses: docker/login-action@v1.8.0
+        with:
+         username: ${{secrets.DOCKERHUB_USERNAME}}
+         password: ${{secrets.DOCKERHUB_TOKEN}}
+      - name: Push to dockerhub
+        run: docker push nkathad/docker-react       
+
       #- name:   Run test
       #  run: docker run nkathad/docker-react npm run test -- --coverage  
   deploy:
@@ -22,22 +30,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Install EB CLI
-      run: |
-        sudo apt-get install python3-pip
-        pip3 install awsebcli --upgrade --user
-
-    - name: Configure AWS credentials
-      run: |
-        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws configure set default.region ${{ secrets.AWS_DEFAULT_REGION }}
-
-    - name: Initialize Elastic Beanstalk with Docker platform
-      run: eb init -r ${{ secrets.AWS_DEFAULT_REGION }} -p docker --verbose
-   #hopefully done
-    - name: Deploy Docker image to Elastic Beanstalk
-      run:  |
-            eb use frontend
-            eb deploy nkathad/docker-react
+    - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v14
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}        
+        application_name: frontend
+        environment_name: frontend-env
+        version_label: app-9336-240412_152218437394
+        region: ${{ secrets.AWS_DEFAULT_REGION }}
