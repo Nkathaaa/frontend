@@ -1,0 +1,9 @@
+- name: Deploy Dockerized Application to Elastic Beanstalk
+  hosts: localhost
+  connection: local
+  tasks:   
+    - name: Configure Elastic Beanstalk environment
+      community.aws.elasticbeanstalk_app:
+        app_name: frontend1
+        description: "Hello World App"
+        state: present
