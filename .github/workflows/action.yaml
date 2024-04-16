@@ -37,5 +37,5 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}        
         application_name: frontend
         environment_name: frontend-env
-        #version_label: app-9336-240412_152218437394
+        version_label: app-9336-240412_152218437394
         region: ${{ secrets.AWS_DEFAULT_REGION }}
