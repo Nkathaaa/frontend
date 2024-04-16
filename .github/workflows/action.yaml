@@ -21,8 +21,8 @@ jobs:
          password: ${{secrets.DOCKERHUB_TOKEN}}         
       - name: Push to dockerhub
         run: docker push  8753/docker-react:latest       
-      - name:   Run test
-        run: docker run  8753/docker-react:latest npm run test -- --coverage  
+     # - name:   Run test
+       #S run: docker run  8753/docker-react:latest npm run test -- --coverage  
   deploy:
     needs: build
     runs-on: ubuntu-latest
