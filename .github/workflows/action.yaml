@@ -33,8 +33,8 @@ jobs:
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v14
       with:
-        application_name: frontend
-        environment_name: frontend-env
+        application_name: Frontend
+        environment_name: Frontend-env
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}        
         version_label: app-d3ca-240416_154353878307
