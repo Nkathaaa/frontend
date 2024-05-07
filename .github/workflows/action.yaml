@@ -50,11 +50,12 @@ jobs:
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v14
       with:
-        application_name: rontend
-        environment_name: rontend-env
+        application_name: fronen
+        environment_name: Fronen-env
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}       
         version_label: "app-${{ steps.format-time.outputs.replaced }}"
+        existing_bucket_name: elasticbeanstalk-us-east-1-748704513488
         region: ${{ secrets.AWS_DEFAULT_REGION }}
         deployment_package: BookAppFrontend.zip
 
