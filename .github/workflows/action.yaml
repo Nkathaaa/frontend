@@ -50,8 +50,8 @@ jobs:
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v14
       with:
-        application_name: fronen
-        environment_name: Fronen-env
+        application_name: react-docker
+        environment_name: React-docker-env 
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}       
         version_label: "app-${{ steps.format-time.outputs.replaced }}"
