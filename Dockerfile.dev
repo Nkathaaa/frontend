@@ -1,10 +1,10 @@
-FROM node:alpine
+FROM node:18-slim
 
 WORKDIR '/app'
 
 COPY package.json .
-RUN npm install
-
+RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
+RUN npm install --verbose --registry=https://registry.npmjs.org/ --fetch-timeout=60000
 COPY . .
-
-CMD ["npm","run", "start"]
+ENV NODE_OPTIONS="--openssl-legacy-provider"
+CMD ["npm", "run", "start"]
